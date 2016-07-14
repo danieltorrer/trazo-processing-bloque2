@@ -45,3 +45,15 @@ $RECYCLE.BIN/
 Network Trash Folder
 Temporary Items
 .apdisk
+
+# Processing tmp files
+*.jpg
+*.pdf
+*.dll
+*.exe
+application.windows32
+application.windows64
+frames
+build-tmp
+web-export
+*.properties
