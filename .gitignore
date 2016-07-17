@@ -57,3 +57,4 @@ frames
 build-tmp
 web-export
 *.properties
+*.xml

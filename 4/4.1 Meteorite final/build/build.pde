@@ -15,7 +15,7 @@ PFont f;
 
 void setup() {
   // tamaño del canvas
-  size(1800, 900);
+  size(900, 450);
 
   // no se repetira la funcion loop
   noLoop();

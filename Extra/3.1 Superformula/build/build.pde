@@ -1,54 +1,63 @@
-// Aris Bezas, 23 moon fase C Igoumeninja, drawing lines through physics laws and produce sound -->
-//Pempti 17 November 2008 Igoumeninja Aris Bezas play with the superformula -->
- 
-int num = 60;//Arithos Sformon se kathe Sforma
-int colorL=255,k = 0,j=100,i=200;
- 
-float x,y,z;
-float r,th=0,step=.1,epi=200;
-float m = 1,n1=-1,n2=0,n3=0;
-float b=1,a=1;
-int counter1=0, counter2=0;
- 
- 
+import processing.serial.*;
+
+float tiempo = 0;
+
+Serial myPort;
+String val;
+int lados = 2;
+
 void setup() {
-  size(900,450);
-  background(0);
-  frameRate(30);
-  smooth();
+  size(500, 500);
+  noFill();
+  stroke(#44F06D);
+  strokeWeight(2);
+  
+  //printArray(Serial.list());
+  String portName = Serial.list()[2];
+  myPort = new Serial(this, portName, 9600);
 }
- 
+
 void draw() {
-   
-  fill(0,5);
-  rect(-5, -5, 1250,510);
-  counter1++;
-  if (counter1 == 50) {
-    m=int(random(3,40));
-    n1=random(.5);
-    n2=random(6.);
-    //n3=random(6.);
-    epi=random(100,200);
-    step=random(.05,10);
-    counter1 = 0;
+  if( myPort.available() > 0 ){
+    val = myPort.readStringUntil('\n');
+  }
+  println(val);
+  if( val != null && val != "0"){
+    val = val.trim();
+    lados = parseInt(val);
+    lados = lados / 50;
+    println("lados:" + lados);
+  }
+  
+  background(#F1F2D0);
+
+  translate(width/2, height/2);
+
+  beginShape();
+  
+  for (float theta = 0; theta <= 2 * PI; theta += 0.05) {
+    float rad = r(theta,
+      mouseY / 100.0, // a
+      2, // b
+      lados, // m  //Lados
+      mouseX /100.0, // n1
+      sin(tiempo) * 0.5 + 1.2, // n2
+      cos(tiempo) * 0.5 + 1.2// n3
+    );
+    float x = rad * cos(theta) * 50;
+    float y = rad * sin(theta) * 50;
+    vertex(x, y);
   }
 
-  translate(mouseX, mouseY);
-  stroke(colorL,35);
-  noFill();
-  beginShape();
-  for(int i=1; i < num; i++) {
-    r = epi*pow(((pow(abs(cos(m*th/4)/a),n2))+(pow(abs(sin(m*th/4)/b),n3))),(-1/n1)); 
-    th = th + step;
-    x = r*cos(th);
-    y = r*sin(th);
-    curveVertex(x,y);
-  }
-  
   endShape();
   
+  tiempo += 0.1;
 }
- 
-void mousePressed()  {
-    background(0);
+
+float r(float theta, float a, float b, float m, float n1, float n2, float n3){
+
+  float firstChunk = pow( abs (cos( m * theta / 4.0) / a ), n2);
+  float secondChunk = pow( abs (sin( m * theta / 4.0) / b ), n3);
+
+  return pow ( firstChunk + secondChunk, -1.0/n1 );
 }
