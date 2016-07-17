@@ -14,14 +14,14 @@ void setup(){
 
   colors = new HColorPool(#002B4F,#00436B,#146A9C,#5D9ECD,#84B6D9,#A3CEE8,#BDE4F2,#CCEEFA,#DDFCF7);
   
-  pool = new HDrawablePool(4500);
+  pool = new HDrawablePool(300);
   pool.autoAddToStage()
     .add(new HShape("triangle.svg"))
 
     .layout(
       new HShapeLayout()
       .target(
-        new HImage("hey.png")
+        new HImage("trazo.png")
       )
     )
 
@@ -34,7 +34,7 @@ void setup(){
             .noStroke()
             .anchorAt(H.CENTER)
             .rotate( int(random(0, 360)))
-            .size( (int)random(0, 10) )
+            .size( (int)random(0, 30) )
           ;
           d.randomColors(colors.fillAndStroke());
         }
