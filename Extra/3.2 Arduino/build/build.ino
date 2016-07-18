@@ -6,6 +6,7 @@
 
 // Define the pin to which the angle sensor is connected.
 const int potentiometer = A0;
+const int pinButton = A1;
 
 void setup()
 {
@@ -14,16 +15,19 @@ void setup()
 
     // Configure the angle sensor's pin for input.
     pinMode(potentiometer, INPUT);
+    pinMode(pinButton, INPUT);
 }
 
 void loop()
 {
     // Read the value of the sensor and print it to the serial console.
     int value = analogRead(potentiometer);
-    Serial.print(value);
+    Serial.println(value);
 
+    if( digitalRead(pinButton)){
+      Serial.println("S");
+      delay(100);
+    }
     // Wait 0.1 seconds between readings.
     delay(100);
 }
-
-

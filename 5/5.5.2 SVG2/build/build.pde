@@ -12,21 +12,16 @@ void setup(){
   colors = new HColorPool(#0B9687, #479E7F, #ABF2BC, #A8D2A7, #5BCBC1);
 
 
-  pool = new HDrawablePool(150);
+  pool = new HDrawablePool(1050);
   pool.autoAddToStage()
-    .add(new HShape("svg1.svg"))
-    .add(new HShape("svg2.svg"))
-    .add(new HShape("svg3.svg"))
-    .add(new HShape("svg4.svg"))
-    .add(new HShape("svg5.svg"))
-    .add(new HShape("svg6.svg"))
+    .add(new HShape("svg7.svg"))
 
     .layout(
       new HGridLayout()
-      .startX(0)
-      .startY(0)
-      .spacing(55,55)
-      .cols(12)
+      .startX(30)
+      .startY(30)
+      .spacing(140,140)
+      .cols(30)
     )
 
     .onCreate(
@@ -35,10 +30,11 @@ void setup(){
           HShape d = (HShape) obj;
           d
             .enableStyle(false)
-            .noStroke()
             .anchorAt(H.CENTER)
-            //.rotate( 90 * int(random(1,4) ) )
-            //.scale(int( random(1, 3) ))
+            //.//fill(#479E7F)
+            .stroke(#479E7F)
+            .rotate( 45 )
+            .scale( 0.5 )
           ;
           d.randomColors(colors.fillOnly());
         }

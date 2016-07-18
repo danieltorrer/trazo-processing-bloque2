@@ -15,7 +15,7 @@ void setup(){
   //colors = new HPixelColorist("gameboy.gif").strokeOnly();
   //colors = new HPixelColorist("gameboy.gif").fillAndStroke();
 
-  for(int i = 0; i < 100; i++) {
+  for(int i = 0; i < 10000; i++) {
     d = new HRect();
     d
       .loc( (int) random(width), (int)random(height))
