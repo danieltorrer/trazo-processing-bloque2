@@ -46,7 +46,7 @@ void draw() {
      float marcador =  0.05 * sqrt(tamano) / PI;
    
      noStroke();
-     fill(27, 95, 227, 50);
+     fill(234, 27, 155, 50);
      ellipse(pixelLong, pixelLat, marcador, marcador);
      
      //si esta dentro de los 10 primeros

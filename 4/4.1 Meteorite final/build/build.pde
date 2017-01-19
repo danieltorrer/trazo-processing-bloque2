@@ -38,7 +38,7 @@ void setup() {
 
 void draw() {
   //Guardar a PDF
-  //beginRecord(PDF, "meteorStrikes.pdf");
+  beginRecord(PDF, "nuevo_meteorStrikes.pdf");
   
   // mostrar mapa
   shape(baseMap, 0, 0, width, height);
@@ -86,6 +86,6 @@ void draw() {
     i++;
   }
   
-  //endRecord();
+  endRecord();
   //println("PDF Saved!");
 }
